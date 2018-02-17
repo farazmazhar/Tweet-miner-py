@@ -20,10 +20,10 @@ import string
 import streamListener as sl
 import tokenizer as t
 
-consumer_key = 'JFPPrFllbgNsL7DU0oeeXxDYc'
-consumer_secret = 'N1Hflo3aTNfcRWATUSTz5QsDyffa86iwTQXL6EJgqkwOtvFeTV'
-access_token = '939138889708687362-PvRLlT9V01sG2dQnzFrk9YCrnChQwdt'
-access_secret = 'cxGbKvmqWzCpjJGL1DBO1fxn37jZqbIfAHTgxBy4B4S7v'    
+consumer_key = 'Consumer_key'
+consumer_secret = 'Consumer_secret'
+access_token = 'acc_token'
+access_secret = 'acc_secret'    
 
 def process_or_store(tweet):
     print(json.dumps(tweet))
@@ -204,6 +204,13 @@ def tweetWalker(args):
     
     
 def main():
+    directory = "mined_tweets"
+    
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    
+    os.chdir(directory)    
+    
     args = get_clArgs().parse_args()
     tweetWalker(args)
 #    tweetAnalyizer(args.user)
