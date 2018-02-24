@@ -25,22 +25,14 @@ consumer_secret = 'Consumer_secret'
 access_token = 'acc_token'
 access_secret = 'acc_secret'    
 
-def process_or_store(tweet):
-    print(json.dumps(tweet))
-
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
 
 api = tweepy.API(auth)
-#print(api.rate_limit_status())
 
-#for status in tweepy.Cursor(api.home_timeline).items(10):
-    # Process a single status
-#    print(status.text+"\n")
-#    process_or_store(status._json)
-#    with open('tweet_dump.json', 'a') as outfile:
-#        json.dump(status._json, outfile)
-    
+def process_or_store(tweet):
+    print(json.dumps(tweet))
+
 def clearExistingFiles(user):
     if user is not "None":
         filename = user + "_tweet_dump.json"
@@ -122,7 +114,7 @@ def generateJSON(tweet, mintweet, user, username):
 def textTokenize(text):
     return t.preprocess(text)
     
-def tweetAnalyizer(user):
+def tweetAnalyizer(user): # To be worked on
     if user is not "None":
         minfilename = user + "_tweet_dump.min.json"
     else:
